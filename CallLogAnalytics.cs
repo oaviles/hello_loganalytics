@@ -35,7 +35,7 @@ namespace Company.Function
             try
             {
 
-                var result = await client.QueryWorkspaceAsync(workspaceId,query,new QueryTimeRange(TimeSpan.FromDays(days)));
+                var result = await client.QueryWorkspaceAsync(workspaceId, query, new QueryTimeRange(TimeSpan.FromDays(double.Parse(days))));
 
                 log.LogInformation("Call LogAnalytics: " + result.Value.Table.Rows.Count + " rows returned");
 
