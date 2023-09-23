@@ -27,6 +27,7 @@ namespace Company.Function
             var clientSecret =  Environment.GetEnvironmentVariable("API_KEY"); 
             var workspaceId =  Environment.GetEnvironmentVariable("WORKSPACE_ID");
             var query = Environment.GetEnvironmentVariable("QUERY"); 
+            var days = Environment.GetEnvironmentVariable("DAYS"); 
 
             var credential = new ClientSecretCredential(tenantId, clientId, clientSecret);
             var client = new LogsQueryClient(credential);
@@ -34,7 +35,7 @@ namespace Company.Function
             try
             {
 
-                var result = await client.QueryWorkspaceAsync(workspaceId,query,new QueryTimeRange(TimeSpan.FromDays(1)));
+                var result = await client.QueryWorkspaceAsync(workspaceId,query,new QueryTimeRange(TimeSpan.FromDays(days)));
 
                 log.LogInformation("Call LogAnalytics: " + result.Value.Table.Rows.Count + " rows returned");
 
