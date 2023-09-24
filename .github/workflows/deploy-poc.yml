@@ -29,6 +29,6 @@ jobs:
           
       - run: |
           cd IaC
-          chmod 775 deploy-poc-env.sh
-          ./deploy-poc-env.sh $APP_ID $SP_PWD $TENANT_ID
+          chmod 775 deploy-poc-function.sh
+          ./deploy-poc-function.sh $APP_ID $SP_PWD $TENANT_ID
         shell: bash
