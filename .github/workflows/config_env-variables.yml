@@ -16,7 +16,7 @@ env:
   
 
 jobs:
-  create-resource-group:
+  config-env-variables:
     runs-on: ubuntu-latest
     steps:
     - name: Azure Login
