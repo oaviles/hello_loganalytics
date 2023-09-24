@@ -9,9 +9,6 @@ env:
   APP_ID: ${{ secrets.CLIENTID }}
   SP_PWD: ${{ secrets.CLIENTSECRET }}
   TENANT_ID: ${{ secrets.TENANTID }}
-  DOTNET_VERSION: '6.0.x'
-  OALALOGS_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
-  OALALOGS_ARTIFACT: oalaogs-func
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -35,31 +32,3 @@ jobs:
           chmod 775 deploy-poc-env.sh
           ./deploy-poc-env.sh $APP_ID $SP_PWD $TENANT_ID
         shell: bash
-  build-package:
-    runs-on: windows-latest
-
-    steps:
-      # Checkout the repo
-      - uses: actions/checkout@main
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      
-      # Setup .NET Runtme
-      - name: Setup .NET Runtime
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }} 
-      
-      # Run dotnet build and publish
-      - name: dotnet build and publish
-        run: |
-          dotnet restore
-          dotnet build --configuration Release
-          dotnet publish -c Release -o '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp' 
-          
-      - uses: actions/upload-artifact@v3
-        with:
-          name: ${{ env.OALALOGS_ARTIFACT }}
-          path: ${{ env.OALALOGS_PACKAGE_PATH }}/myapp
