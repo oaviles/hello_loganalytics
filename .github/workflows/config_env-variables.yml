@@ -11,9 +11,7 @@ env:
   TENANT_ID: ${{ secrets.TENANT_ID }}
   WORKSPACE_ID: ${{ secrets.WORKSPACE_ID }}
   DAYS: 1
-  QUERY: 'AppRequests | summarize CountByCountry=count() by ClientCountryOrRegion | top 10 by CountByCountry'
-  
-  
+  QUERY: "AppRequests | summarize CountByCountry=count() by ClientCountryOrRegion | top 10 by CountByCountry"
 
 jobs:
   config-env-variables:
