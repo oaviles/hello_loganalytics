@@ -31,6 +31,6 @@ jobs:
           ls -l
           cd IaC
           ls -l
-          chmod 775 ./IaC/deploy-poc-env.sh
-          ./IaC/deploy-poc-env.sh $APP_ID $SP_PWD $TENANT_ID
+          chmod 775 /IaC/deploy-poc-env.sh
+          /IaC/deploy-poc-env.sh $APP_ID $SP_PWD $TENANT_ID
         shell: bash
