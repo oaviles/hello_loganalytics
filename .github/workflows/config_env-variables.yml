@@ -26,4 +26,4 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-          az functionapp config appsettings set --name ${{ env.FUNCTION_NAME }}  --resource-group ${{ env.AZURE_RG }} --settings API_ID=${{ env.API_ID }} API_KEY=${{ env.API_KEY }} TENANT_ID=${{ env.TENANT_ID }} WORKSPACE_ID=${{ env.WORKSPACE_ID }} QUERY=${{ env.QUERY }}
+          az functionapp config appsettings set --name ${{ env.FUNCTION_NAME }}  --resource-group ${{ env.AZURE_RG }} --settings API_ID=${{ env.API_ID }} API_KEY=${{ env.API_KEY }} TENANT_ID=${{ env.TENANT_ID }} WORKSPACE_ID=${{ env.WORKSPACE_ID }} DAY=${{ env.DAY }}
