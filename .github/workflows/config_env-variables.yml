@@ -11,7 +11,6 @@ env:
   TENANT_ID: ${{ secrets.TENANT_ID }}
   WORKSPACE_ID: ${{ secrets.WORKSPACE_ID }}
   DAYS: 1
-  QUERY: ''
 
 jobs:
   config-env-variables:
